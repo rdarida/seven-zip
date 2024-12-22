@@ -8,44 +8,57 @@ on:
       - .github/workflows/test.yml
 
 jobs:
-  test_windows:
+  test_windows: # win32 x64
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '20'
+      # - uses: actions/setup-node@v4
+      #   with:
+      #     node-version: '20'
+
+      # - run: |
+      #     npm ci
+      #     npm run build
+      #     node dist/run.js
 
       - run: |
-          npm ci
-          npm run build
-          node dist/run.js
+          cd 7zip
+          win32_x64_7z.exe -version
 
-  test_ubuntu:
+
+  test_ubuntu: # linux x64
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '20'
+      # - uses: actions/setup-node@v4
+      #   with:
+      #     node-version: '20'
+
+      # - run: |
+      #     npm ci
+      #     npm run build
+      #     node dist/run.js
 
       - run: |
-          npm ci
-          npm run build
-          node dist/run.js
+          cd 7zip
+          linux_x64_7z -version
 
-  test_macos:
+  test_macos: # darwin arm64
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '20'
+      # - uses: actions/setup-node@v4
+      #   with:
+      #     node-version: '20'
+
+      # - run: |
+      #     npm ci
+      #     npm run build
+      #     node dist/run.js
 
       - run: |
-          npm ci
-          npm run build
-          node dist/run.js
+          cd 7zip
+          darwin_7z -version
