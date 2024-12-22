@@ -35,7 +35,7 @@ jobs:
         with:
           node-version: '20'
 
-      - run: where 7z
+      - run: which 7z
 
       - run: |
           npm ci
@@ -54,7 +54,7 @@ jobs:
         with:
           node-version: '20'
 
-      - run: where 7z
+      - run: which 7z
 
       - run: |
           npm ci
