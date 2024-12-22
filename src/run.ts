@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import { join, resolve } from 'path';
 import { execSync } from 'child_process';
-import { EOL } from 'os';
+import { EOL, release } from 'os';
 
 const SEVEN_DIR = resolve(__dirname, '..', '7zip');
 
@@ -18,7 +18,7 @@ function exec(command: string): void {
 (() => {
   const { platform, arch } = process;
 
-  console.log(platform, arch);
+  console.log(platform, arch, release());
 
   switch (platform) {
     case 'win32': {
