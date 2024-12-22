@@ -22,9 +22,10 @@ function exec(command: string): void {
 
   switch (platform) {
     case 'win32': {
-      exec(join(SEVEN_DIR, 'win32_7zr.exe'));
-      exec(join(SEVEN_DIR, 'win32_7z.exe'));
-      exec(join(SEVEN_DIR, 'win32_x64_7z.exe'));
+      // exec(join(SEVEN_DIR, 'win32_7zr.exe'));
+      // exec(join(SEVEN_DIR, 'win32_7z.exe'));
+      // exec(join(SEVEN_DIR, 'win32_x64_7z.exe'));
+      exec('7z');
       break;
     }
 
