@@ -43,6 +43,7 @@ jobs:
 
       - run: |
           cd 7zip
+          chmod +x ./linux_x64_7z
           ./linux_x64_7z -version
 
   test_macos: # darwin arm64
@@ -61,4 +62,5 @@ jobs:
 
       - run: |
           cd 7zip
+          chmod +x ./darwin_7z
           ./darwin_7z -version
