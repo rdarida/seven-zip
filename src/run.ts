@@ -29,12 +29,14 @@ function exec(command: string): void {
     }
 
     case 'darwin': {
-      exec(join(SEVEN_DIR, 'darwin_7z'));
+      // exec(join(SEVEN_DIR, 'darwin_7z'));
+      exec('7z');
       break;
     }
 
     case 'linux': {
-      exec(join(SEVEN_DIR, 'linux_x64_7z'));
+      // exec(join(SEVEN_DIR, 'linux_x64_7z'));
+      exec('7z');
       break;
     }
   }
