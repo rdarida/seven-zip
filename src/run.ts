@@ -7,7 +7,7 @@ const SEVEN_DIR = resolve(__dirname, '..', '7zip');
 
 function exec(command: string): void {
   console.log(
-    execSync(command + ' --help')
+    execSync(command)
       .toString()
       .split(EOL)
       .map(l => l.trim())
@@ -22,7 +22,9 @@ function exec(command: string): void {
 
   switch (platform) {
     case 'win32': {
+      exec(join(SEVEN_DIR, 'win32_7zr.exe'));
       exec(join(SEVEN_DIR, 'win32_7z.exe'));
+      exec(join(SEVEN_DIR, 'win32_x64_7z.exe'));
       break;
     }
 
