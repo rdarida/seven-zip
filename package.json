@@ -1,0 +1,29 @@
+{
+  "name": "cross-7zip",
+  "version": "0.0.0",
+  "description": "Cross-platform 7zip for Node.js.",
+  "keywords": [
+    "7zip",
+    "cross-platform",
+    "linux",
+    "macos",
+    "windows"
+  ],
+  "license": "MIT",
+  "author": "Róbert Darida",
+  "homepage": "https://github.com/rdarida/cross-7zip#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rdarida/cross-7zip.git"
+  },
+  "bugs": {
+    "url": "https://github.com/rdarida/cross-7zip/issues"
+  },
+  "main": "index.js",
+  "scripts": {
+    "prettier": "prettier . --check"
+  },
+  "devDependencies": {
+    "prettier": "^3.4.2"
+  }
+}
