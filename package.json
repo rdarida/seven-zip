@@ -20,6 +20,9 @@
     "url": "https://github.com/rdarida/cross-7zip/issues"
   },
   "main": "index.js",
+  "files": [
+    "7zip"
+  ],
   "scripts": {
     "prettier": "prettier . --check"
   },
