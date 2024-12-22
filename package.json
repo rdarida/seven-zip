@@ -1,5 +1,5 @@
 {
-  "name": "cross-7zip",
+  "name": "seven-zip",
   "version": "0.0.0",
   "description": "Cross-platform 7zip for Node.js.",
   "keywords": [
@@ -11,18 +11,18 @@
   ],
   "license": "MIT",
   "author": "Róbert Darida",
-  "homepage": "https://github.com/rdarida/cross-7zip#readme",
+  "homepage": "https://github.com/rdarida/seven-zip#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rdarida/cross-7zip.git"
+    "url": "git+https://github.com/rdarida/seven-zip.git"
   },
   "bugs": {
-    "url": "https://github.com/rdarida/cross-7zip/issues"
+    "url": "https://github.com/rdarida/seven-zip/issues"
   },
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "bin": {
-    "cross-7zip": "./dist/cli.js",
+    "seven-zip": "./dist/cli.js",
     "seven": "./dist/cli.js"
   },
   "files": [
