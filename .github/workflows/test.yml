@@ -33,6 +33,7 @@ jobs:
           node-version: '20'
 
       - run: |
+          chmod +x 7zip/linux_x64_7z
           npm ci
           npm run build
           node dist/run.js
@@ -47,6 +48,7 @@ jobs:
           node-version: '20'
 
       - run: |
+          chmod +x 7zip/darwin_7z
           npm ci
           npm run build
           node dist/run.js

@@ -18,6 +18,8 @@ function exec(command: string): void {
 (() => {
   const { platform, arch } = process;
 
+  console.log(platform, arch);
+
   switch (platform) {
     case 'win32': {
       exec(join(SEVEN_DIR, 'win32_x64_7z.exe'));
@@ -34,6 +36,4 @@ function exec(command: string): void {
       break;
     }
   }
-
-  console.log(platform, arch);
 })();
