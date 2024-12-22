@@ -18,7 +18,7 @@ yargs
   .usage('$0 <cmd> [args]')
   .help()
   .command<ZipArgs>(
-    'zip [destination] [paths...]',
+    'zip <destination> <paths...>',
     'Creates a compressed archive, or zipped file, from specified files and folders.',
     yargs => {
       return yargs
@@ -44,7 +44,7 @@ yargs
     }
   )
   .command<UnzipArgs>(
-    'unzip [source] [destination]',
+    'unzip <source> <destination>',
     'Extracts files from a specified archive (zipped) file.',
     yargs => {
       return yargs
