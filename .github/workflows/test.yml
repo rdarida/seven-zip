@@ -12,16 +12,13 @@ jobs:
   test_windows: # win32 x64
     runs-on: windows-latest
     steps:
-      - name: Print OS Info
-        run: |
-          echo %PROCESSOR_ARCHITECTURE%
-          echo %OS%
-
       - uses: actions/checkout@v4
 
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
+
+      - run: where 7z
 
       - run: |
           npm ci
@@ -32,16 +29,13 @@ jobs:
   test_ubuntu: # linux x64
     runs-on: ubuntu-latest
     steps:
-      - name: Print OS Info
-        run: |
-          echo %PROCESSOR_ARCHITECTURE%
-          echo %OS%
-
       - uses: actions/checkout@v4
 
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
+
+      - run: where 7z
 
       - run: |
           npm ci
@@ -54,16 +48,13 @@ jobs:
   test_macos: # darwin arm64
     runs-on: macos-latest
     steps:
-      - name: Print OS Info
-        run: |
-          echo %PROCESSOR_ARCHITECTURE%
-          echo %OS%
-
       - uses: actions/checkout@v4
 
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
+
+      - run: where 7z
 
       - run: |
           npm ci
