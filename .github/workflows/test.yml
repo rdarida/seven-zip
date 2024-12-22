@@ -6,6 +6,7 @@ on:
       - main
     paths:
       - .github/workflows/test.yml
+      - src/run.ts
 
 jobs:
   test_windows: # win32 x64
@@ -13,54 +14,39 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # - uses: actions/setup-node@v4
-      #   with:
-      #     node-version: '20'
-
-      # - run: |
-      #     npm ci
-      #     npm run build
-      #     node dist/run.js
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
 
       - run: |
-          cd 7zip
-          ./win32_x64_7z.exe -version
-
+          npm ci
+          npm run build
+          node dist/run.js
 
   test_ubuntu: # linux x64
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
-      # - uses: actions/setup-node@v4
-      #   with:
-      #     node-version: '20'
-
-      # - run: |
-      #     npm ci
-      #     npm run build
-      #     node dist/run.js
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
 
       - run: |
-          cd 7zip
-          chmod +x ./linux_x64_7z
-          ./linux_x64_7z -version
+          npm ci
+          npm run build
+          node dist/run.js
 
   test_macos: # darwin arm64
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v4
 
-      # - uses: actions/setup-node@v4
-      #   with:
-      #     node-version: '20'
-
-      # - run: |
-      #     npm ci
-      #     npm run build
-      #     node dist/run.js
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
 
       - run: |
-          cd 7zip
-          chmod +x ./darwin_7z
-          ./darwin_7z -version
+          npm ci
+          npm run build
+          node dist/run.js
