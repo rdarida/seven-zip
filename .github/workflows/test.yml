@@ -24,7 +24,7 @@ jobs:
 
       - run: |
           cd 7zip
-          win32_x64_7z.exe -version
+          ./win32_x64_7z.exe -version
 
 
   test_ubuntu: # linux x64
@@ -43,7 +43,7 @@ jobs:
 
       - run: |
           cd 7zip
-          linux_x64_7z -version
+          ./linux_x64_7z -version
 
   test_macos: # darwin arm64
     runs-on: macos-latest
@@ -61,4 +61,4 @@ jobs:
 
       - run: |
           cd 7zip
-          darwin_7z -version
+          ./darwin_7z -version
