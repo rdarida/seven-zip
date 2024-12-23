@@ -12,10 +12,7 @@ function exec(command: string): void {
     return;
   }
 
-  console.log(
-    execFileSync(command)
-      .toString()
-  );
+  console.log(execFileSync(command).toString());
 }
 
 (() => {
@@ -25,22 +22,17 @@ function exec(command: string): void {
 
   switch (platform) {
     case 'win32': {
-      // exec(join(SEVEN_DIR, 'win32_7zr.exe'));
-      // exec(join(SEVEN_DIR, 'win32_7z.exe'));
       exec(join(SEVEN_DIR, 'win32_x64_7z.exe'));
-      // exec('7z');
       break;
     }
 
     case 'darwin': {
-      // exec(join(SEVEN_DIR, 'darwin_7z'));
-      exec('7z');
+      exec(join(SEVEN_DIR, 'darwin_7z'));
       break;
     }
 
     case 'linux': {
       exec(join(SEVEN_DIR, 'linux_x64_7z'));
-      exec('7z');
       break;
     }
   }

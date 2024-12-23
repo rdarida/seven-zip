@@ -11,20 +11,22 @@ on:
 jobs:
   # win32 x64 10.0.20348
   # 7-Zip 24.09 (x64) : Copyright (c) 1999-2024 Igor Pavlov : 2024-11-29
-  # test_windows:
-  #   runs-on: windows-latest
-  #   steps:
-  #     - uses: actions/checkout@v4
+  test_windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
 
-  #     - uses: actions/setup-node@v4
-  #       with:
-  #         node-version: '20'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
 
-  #     - run: |
-  #         npm ci
-  #         npm run build
+      - run: |
+          npm ci
+          npm run build
 
-  #     - run: node dist/run.js
+      - run: node dist/run.js
 
   # linux x64 6.5.0-1025-azure
   # 7-Zip [64] 16.02 : Copyright (c) 1999-2016 Igor Pavlov : 2016-05-21
@@ -39,36 +41,31 @@ jobs:
         with:
           node-version: '20'
 
-      - run: which 7z
+      - run: |
+          npm ci
+          npm run build
+
+      - run: |
+          chmod +x 7zip/linux_x64_7z
+          node dist/run.js
+
+  # darwin arm64 23.6.0
+  # 7-Zip [64] 17.05 : Copyright (c) 1999-2021 Igor Pavlov : 2017-08-28
+  test_macos:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
 
       - run: |
           npm ci
           npm run build
 
       - run: |
-          ls -al 7zip/linux_x64_7z
-          file 7zip/linux_x64_7z
-          cat 7zip/linux_x64_7z
-          sudo chmod +x 7zip/linux_x64_7z
+          chmod +x 7zip/darwin_7z
           node dist/run.js
-
-  # # darwin arm64 23.6.0
-  # # 7-Zip [64] 17.05 : Copyright (c) 1999-2021 Igor Pavlov : 2017-08-28
-  # test_macos:
-  #   runs-on: macos-latest
-  #   steps:
-  #     - uses: actions/checkout@v4
-
-  #     - uses: actions/setup-node@v4
-  #       with:
-  #         node-version: '20'
-
-  #     - run: which 7z
-
-  #     - run: |
-  #         npm ci
-  #         npm run build
-
-  #     - run: |
-  #         chmod +x 7zip/darwin_7z
-  #         node dist/run.js
