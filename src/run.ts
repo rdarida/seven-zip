@@ -1,12 +1,13 @@
 #!/usr/bin/env node
 import { join, resolve } from 'path';
-import { execFileSync } from 'child_process';
-import { EOL, release } from 'os';
 import { existsSync } from 'fs';
+import { execFileSync } from 'child_process';
 
 const SEVEN_DIR = resolve(__dirname, '..', '7zip');
 
 function exec(command: string): void {
+  command = join(SEVEN_DIR, command);
+
   if (!existsSync(command)) {
     console.log('not found');
     return;
@@ -17,22 +18,21 @@ function exec(command: string): void {
 
 (() => {
   const { platform, arch } = process;
-
-  console.log(platform, arch, release());
+  const execName = `${platform}_${arch}_7z`;
 
   switch (platform) {
     case 'win32': {
-      exec(join(SEVEN_DIR, 'win32_ia32_7z.exe'));
+      exec(`${execName}.exe`);
       break;
     }
 
     case 'darwin': {
-      exec(join(SEVEN_DIR, 'darwin_7z'));
+      exec('darwin_7z');
       break;
     }
 
     case 'linux': {
-      exec(join(SEVEN_DIR, 'linux_ia32_7z'));
+      exec(execName);
       break;
     }
   }
