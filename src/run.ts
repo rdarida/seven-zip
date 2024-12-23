@@ -39,7 +39,7 @@ function exec(command: string): void {
     }
 
     case 'linux': {
-      // exec(join(SEVEN_DIR, 'linux_x64_7z'));
+      exec(join(SEVEN_DIR, 'linux_x64_7z'));
       exec('7z');
       break;
     }
