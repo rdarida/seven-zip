@@ -1,13 +1,13 @@
 #!/usr/bin/env node
 import { join, resolve } from 'path';
-import { execSync } from 'child_process';
+import { execFileSync } from 'child_process';
 import { EOL, release } from 'os';
 
 const SEVEN_DIR = resolve(__dirname, '..', '7zip');
 
 function exec(command: string): void {
   console.log(
-    execSync(command)
+    execFileSync(command)
       .toString()
       .split(EOL)
       .map(l => l.trim())
