@@ -43,21 +43,27 @@ function main(): void {
 }
 
 (() => {
-  const dataDir = join(TESTS_DIR, '.temp');
+  const dataDir = join(TESTS_DIR, 'data');
 
-  if (existsSync(dataDir)) {
-    rimraf(dataDir);
+  if (!existsSync(dataDir)) {
+    mkdirSync(dataDir);
   }
 
-  mkdirSync(dataDir, { recursive: true });
+  const tempDir = join(TESTS_DIR, '.temp');
+
+  if (existsSync(tempDir)) {
+    rimraf(tempDir);
+  }
+
+  mkdirSync(tempDir, { recursive: true });
 
   [1, 2].forEach(v => {
     const fileName = `test ${v}.txt`;
-    const filePath = join(dataDir, fileName);
+    const filePath = join(tempDir, fileName);
     writeFileSync(filePath, `Hello, ${fileName}!` + EOL);
   });
 
-  const innerDir = join(dataDir, 'inner folder');
+  const innerDir = join(tempDir, 'inner folder');
   mkdirSync(innerDir);
 
   [1, 2].forEach(v => {

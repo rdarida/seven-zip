@@ -35,7 +35,6 @@ jobs:
   #     - name: Create test archive
   #       run: |
   #         cd tests
-  #         mkdir data
   #         ../7zip/win32_x64_7z.exe a "data/test win32.7z" ".temp/inner folder" ".temp/test 1.txt" ".temp/test 2.txt"
   #         dir data
 
@@ -73,7 +72,6 @@ jobs:
       - name: Create test archive
         run: |
           cd tests
-          mkdir data
           ../7zip/linux_x64_7z a "data/test linux.7z" ".temp/inner folder" ".temp/test 1.txt" ".temp/test 2.txt"
           ls -al data
 
