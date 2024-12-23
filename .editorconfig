@@ -10,7 +10,8 @@ insert_final_newline = true
 trim_trailing_whitespace = true
 
 [tests/data/**]
-insert_final_newline = false
+end_of_line = unset
+insert_final_newline = unset
 
 [*.md]
 trim_trailing_whitespace = false
