@@ -1,46 +1,11 @@
 #!/usr/bin/env node
-import { join, resolve } from 'path';
-import { sync as rimraf } from 'rimraf';
-import { existsSync, mkdirSync, writeFileSync } from 'fs';
-import { EOL } from 'os';
-import { execFileSync } from 'child_process';
+const { join, resolve } = require('path');
+const { sync: rimraf } = require('rimraf');
+const { existsSync, mkdirSync, writeFileSync } = require('fs');
+const { EOL } = require('os');
 
 const ROOT_DIR = resolve(__dirname, '..');
-const SEVEN_DIR = join(ROOT_DIR, '7zip');
 const TESTS_DIR = join(ROOT_DIR, 'tests');
-
-function exec(command: string): void {
-  command = join(SEVEN_DIR, command);
-
-  if (!existsSync(command)) {
-    console.log('not found');
-    return;
-  }
-
-  console.log(execFileSync(command).toString());
-}
-
-function main(): void {
-  const { platform, arch } = process;
-  const execName = `${platform}_${arch}_7z`;
-
-  switch (platform) {
-    case 'win32': {
-      exec(`${execName}.exe`);
-      break;
-    }
-
-    case 'darwin': {
-      exec('darwin_7z');
-      break;
-    }
-
-    case 'linux': {
-      exec(execName);
-      break;
-    }
-  }
-}
 
 (() => {
   const dataDir = join(TESTS_DIR, 'data');
