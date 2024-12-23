@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 const { join, resolve } = require('path');
-const { sync: rimraf } = require('rimraf');
+const { rimrafSync } = require('rimraf');
 const { existsSync, mkdirSync, writeFileSync } = require('fs');
 const { EOL } = require('os');
 
@@ -10,14 +10,18 @@ const TESTS_DIR = join(ROOT_DIR, 'tests');
 (() => {
   const dataDir = join(TESTS_DIR, 'data');
 
-  if (!existsSync(dataDir)) {
+  if (existsSync(dataDir)) {
+    if (process.platform === 'win32') {
+      rimrafSync(dataDir);
+    }
+  } else {
     mkdirSync(dataDir);
   }
 
   const tempDir = join(ROOT_DIR, '.temp');
 
   if (existsSync(tempDir)) {
-    rimraf(tempDir);
+    rimrafSync(tempDir);
   }
 
   mkdirSync(tempDir, { recursive: true });
