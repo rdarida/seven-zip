@@ -12,44 +12,9 @@ permissions:
   contents: write
 
 jobs:
-  # win32 x64
-  test_windows:
-    runs-on: windows-latest
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          lfs: true
-
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-
-      - name: Build
-        run: |
-          npm ci
-          npm run build
-
-      - name: Run
-        run: node dist/run.js
-
-      - name: Create test archive
-        run: |
-          cd tests
-          mkdir data
-          ../7zip/win32_x64_7z.exe a "data/test win32.7z" ".temp/inner folder" ".temp/test 1.txt" ".temp/test 2.txt"
-          dir data
-
-      - name: Push
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add tests
-          git commit -m "chore: generate test archive for windows"
-          git push
-
-  # # linux x64
-  # test_ubuntu:
-  #   runs-on: ubuntu-latest
+  # # win32 x64
+  # test_windows:
+  #   runs-on: windows-latest
   #   steps:
   #     - uses: actions/checkout@v4
   #       with:
@@ -59,16 +24,66 @@ jobs:
   #       with:
   #         node-version: '20'
 
-  #     - run: |
+  #     - name: Build
+  #       run: |
   #         npm ci
   #         npm run build
 
-  #     - run: |
-  #         chmod +x 7zip/linux_ia32_7z
-  #         chmod +x 7zip/linux_x64_7z
-  #         chmod +x 7zip/linux_arm_7z
-  #         chmod +x 7zip/linux_arm64_7z
-  #         node dist/run.js
+  #     - name: Run
+  #       run: node dist/run.js
+
+  #     - name: Create test archive
+  #       run: |
+  #         cd tests
+  #         mkdir data
+  #         ../7zip/win32_x64_7z.exe a "data/test win32.7z" ".temp/inner folder" ".temp/test 1.txt" ".temp/test 2.txt"
+  #         dir data
+
+  #     - name: Push
+  #       run: |
+  #         git config --global user.name "github-actions[bot]"
+  #         git config --global user.email "github-actions[bot]@users.noreply.github.com"
+  #         git add tests
+  #         git commit -m "chore: generate test archive for windows"
+  #         git push
+
+  # linux x64
+  test_ubuntu:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - run: |
+          npm ci
+          npm run build
+
+      - run: |
+          chmod +x 7zip/linux_ia32_7z
+          chmod +x 7zip/linux_x64_7z
+          chmod +x 7zip/linux_arm_7z
+          chmod +x 7zip/linux_arm64_7z
+          node dist/run.js
+
+      - name: Create test archive
+        run: |
+          cd tests
+          mkdir data
+          ../7zip/linux_x64_7z a "data/test linux.7z" ".temp/inner folder" ".temp/test 1.txt" ".temp/test 2.txt"
+          ls -al data
+
+      - name: Push
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add tests
+          git commit -m "chore: generate test archive for windows"
+          git push
 
   # # darwin arm64
   # test_macos:
