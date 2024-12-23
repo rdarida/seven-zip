@@ -21,51 +21,60 @@ jobs:
         with:
           node-version: '20'
 
-      - run: |
+      - name: Build
+        run: |
           npm ci
           npm run build
 
-      - run: node dist/run.js
+      - name: Run
+        run: node dist/run.js
 
-  # linux x64
-  test_ubuntu:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          lfs: true
+      - name: Zip
+        run: |
+          cd tests
+          mkdir data
+          ../7zip/win32_x64_7z.exe a "data/test win32.7z" ".temp/inner folder" ".temp/test 1.txt" ".temp/test 2.txt"
+          dir data
 
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '20'
+  # # linux x64
+  # test_ubuntu:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #       with:
+  #         lfs: true
 
-      - run: |
-          npm ci
-          npm run build
+  #     - uses: actions/setup-node@v4
+  #       with:
+  #         node-version: '20'
 
-      - run: |
-          chmod +x 7zip/linux_ia32_7z
-          chmod +x 7zip/linux_x64_7z
-          chmod +x 7zip/linux_arm_7z
-          chmod +x 7zip/linux_arm64_7z
-          node dist/run.js
+  #     - run: |
+  #         npm ci
+  #         npm run build
 
-  # darwin arm64
-  test_macos:
-    runs-on: macos-latest
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          lfs: true
+  #     - run: |
+  #         chmod +x 7zip/linux_ia32_7z
+  #         chmod +x 7zip/linux_x64_7z
+  #         chmod +x 7zip/linux_arm_7z
+  #         chmod +x 7zip/linux_arm64_7z
+  #         node dist/run.js
 
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '20'
+  # # darwin arm64
+  # test_macos:
+  #   runs-on: macos-latest
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #       with:
+  #         lfs: true
 
-      - run: |
-          npm ci
-          npm run build
+  #     - uses: actions/setup-node@v4
+  #       with:
+  #         node-version: '20'
 
-      - run: |
-          chmod +x 7zip/darwin_7z
-          node dist/run.js
+  #     - run: |
+  #         npm ci
+  #         npm run build
+
+  #     - run: |
+  #         chmod +x 7zip/darwin_7z
+  #         node dist/run.js

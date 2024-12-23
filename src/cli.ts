@@ -16,7 +16,6 @@ type UnzipArgs = {
 yargs
   .scriptName('seven')
   .usage('$0 <cmd> [args]')
-  .help()
   .command<ZipArgs>(
     'zip <destination> <paths...>',
     'Creates a compressed archive, or zipped file, from specified files and folders.',
@@ -76,5 +75,6 @@ yargs
     }
   )
   .demandCommand(1, 'You need to specify a command: zip or unzip')
+  .help()
   .strict()
   .parseSync();
