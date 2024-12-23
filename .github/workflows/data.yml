@@ -1,11 +1,11 @@
-name: Test
+name: Data
 
 on:
   push:
     branches:
       - main
     paths:
-      - .github/workflows/test.yml
+      - .github/workflows/data.yml
       - tests/data.js
 
 permissions:
