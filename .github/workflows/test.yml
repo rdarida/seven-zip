@@ -46,6 +46,7 @@ jobs:
           npm run build
 
       - run: |
+          chmod +x 7zip/linux_x64_7z
           node dist/run.js
 
   # darwin arm64 23.6.0
@@ -66,4 +67,5 @@ jobs:
           npm run build
 
       - run: |
+          chmod +x 7zip/darwin_7z
           node dist/run.js
