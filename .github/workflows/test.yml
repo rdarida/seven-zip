@@ -46,7 +46,10 @@ jobs:
           npm run build
 
       - run: |
+          chmod +x 7zip/linux_ia32_7z
           chmod +x 7zip/linux_x64_7z
+          chmod +x 7zip/linux_arm_7z
+          chmod +x 7zip/linux_arm64_7z
           node dist/run.js
 
   # darwin arm64 23.6.0
