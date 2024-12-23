@@ -14,7 +14,7 @@ const TESTS_DIR = join(ROOT_DIR, 'tests');
     mkdirSync(dataDir);
   }
 
-  const tempDir = join(TESTS_DIR, '.temp');
+  const tempDir = join(ROOT_DIR, '.temp');
 
   if (existsSync(tempDir)) {
     rimraf(tempDir);
@@ -29,6 +29,7 @@ const TESTS_DIR = join(ROOT_DIR, 'tests');
   });
 
   const innerDir = join(tempDir, 'inner folder');
+
   mkdirSync(innerDir);
 
   [1, 2].forEach(v => {

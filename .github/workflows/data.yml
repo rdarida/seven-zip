@@ -38,8 +38,8 @@ jobs:
 
       - name: Create test archive
         run: |
-          cd tests
-          ../7zip/win32_x64_7z.exe a "data/test win32.7z" ".temp/inner folder" ".temp/test 1.txt" ".temp/test 2.txt"
+          cd .temp
+          ../7zip/win32_x64_7z.exe a "../tests/data/test win32.7z" "inner folder" "test 1.txt" "test 2.txt"
           dir data
 
       - name: Push
@@ -76,8 +76,8 @@ jobs:
       - name: Create test archive
         run: |
           chmod +x 7zip/linux_x64_7z
-          cd tests
-          ../7zip/linux_x64_7z a "data/test linux.7z" ".temp/inner folder" ".temp/test 1.txt" ".temp/test 2.txt"
+          cd .temp
+          ../7zip/linux_x64_7z a "../tests/data/test linux.7z" "inner folder" "test 1.txt" "test 2.txt"
           ls -al data
 
       - name: Push
@@ -114,8 +114,8 @@ jobs:
       - name: Create test archive
         run: |
           chmod +x 7zip/darwin_7z
-          cd tests
-          ../7zip/darwin_7z a "data/test darwin.7z" ".temp/inner folder" ".temp/test 1.txt" ".temp/test 2.txt"
+          cd .temp
+          ../7zip/darwin_7z a "../tests/data/test darwin.7z" "inner folder" "test 1.txt" "test 2.txt"
           ls -al data
 
       - name: Push
