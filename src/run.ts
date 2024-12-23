@@ -2,16 +2,19 @@
 import { join, resolve } from 'path';
 import { execFileSync } from 'child_process';
 import { EOL, release } from 'os';
+import { existsSync } from 'fs';
 
 const SEVEN_DIR = resolve(__dirname, '..', '7zip');
 
 function exec(command: string): void {
+  if (!existsSync(command)) {
+    console.log('not found');
+    return;
+  }
+
   console.log(
     execFileSync(command)
       .toString()
-      .split(EOL)
-      .map(l => l.trim())
-      .filter(l => l.length)[0]
   );
 }
 
