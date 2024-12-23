@@ -40,7 +40,7 @@ jobs:
         run: |
           cd .temp
           ../7zip/win32_x64_7z.exe a "../tests/data/test win32.7z" "inner folder" "test 1.txt" "test 2.txt"
-          dir data
+          dir ../tests/data
 
       - name: Push
         run: |
@@ -78,7 +78,7 @@ jobs:
           chmod +x 7zip/linux_x64_7z
           cd .temp
           ../7zip/linux_x64_7z a "../tests/data/test linux.7z" "inner folder" "test 1.txt" "test 2.txt"
-          ls -al data
+          ls -al ../tests/data
 
       - name: Push
         run: |
@@ -116,7 +116,7 @@ jobs:
           chmod +x 7zip/darwin_7z
           cd .temp
           ../7zip/darwin_7z a "../tests/data/test darwin.7z" "inner folder" "test 1.txt" "test 2.txt"
-          ls -al data
+          ls -al ../tests/data
 
       - name: Push
         run: |
