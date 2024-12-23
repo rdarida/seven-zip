@@ -44,6 +44,8 @@ jobs:
           npm run build
 
       - run: |
+          ls -al 7zip/linux_x64_7z
+          file 7zip/linux_x64_7z
           sudo chmod +x 7zip/linux_x64_7z
           node dist/run.js
 
