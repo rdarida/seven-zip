@@ -13,7 +13,7 @@ permissions:
 
 jobs:
   # win32 x64
-  test_windows:
+  test_win32:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
@@ -45,9 +45,9 @@ jobs:
           git push
 
   # linux x64
-  test_ubuntu:
+  test_linux:
     runs-on: ubuntu-latest
-    needs: test_windows
+    needs: test_win32
     steps:
       - uses: actions/checkout@v4
         with:
@@ -79,7 +79,7 @@ jobs:
           git push
 
   # darwin arm64
-  test_macos:
+  test_darwin:
     runs-on: macos-latest
     needs: test_linux
     steps:
