@@ -9,7 +9,7 @@ export async function execute(command: string, args: string[]): Promise<void> {
   return new Promise((resolve, reject) => {
     execFile(command, args, OPTIONS, error => {
       if (error) {
-        return reject(error);
+        return reject(new Error(error.message));
       }
 
       resolve();
