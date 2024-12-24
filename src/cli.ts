@@ -15,10 +15,13 @@ type UnzipArgs = {
 
 yargs
   .scriptName('seven')
-  .usage('$0 <cmd> [args]')
+  .usage(
+    '$0 <cmd> [args]',
+    'A CLI tool for compressing and extracting files using 7-Zip.'
+  )
   .command<ZipArgs>(
     'zip <destination> <paths...>',
-    'Creates a compressed archive, or zipped file, from specified files and folders.',
+    'Compresses multiple files into a zipped file.',
     yargs => {
       return yargs
         .example(
@@ -48,7 +51,7 @@ yargs
   )
   .command<UnzipArgs>(
     'unzip <source> <destination>',
-    'Extracts files from a specified archive (zipped) file.',
+    'Extracts files from a specified zipped file.',
     yargs => {
       return yargs
         .example(

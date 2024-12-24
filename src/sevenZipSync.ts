@@ -2,7 +2,7 @@ import { executeSync } from './utils';
 import { getSevenZipPath } from './getSevenZipPath';
 
 /**
- *  Compresses multiple files into an archive synchronously.
+ *  Compresses multiple files into a zipped file **synchronously**.
  *
  * @param paths Specifies the paths to the files to add to the archive zipped
  * file.

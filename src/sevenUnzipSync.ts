@@ -2,7 +2,7 @@ import { executeSync } from './utils';
 import { getSevenZipPath } from './getSevenZipPath';
 
 /**
- * Extracts files from a specified archive (zipped) file synchronously.
+ * Extracts files from a specified zipped file **synchronously**.
  *
  * @param source Specifies the path to the archive file.
  *
