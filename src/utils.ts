@@ -1,5 +1,22 @@
-import { execFileSync } from 'child_process';
+import { ExecFileOptions, execFile, execFileSync } from 'child_process';
+
+const OPTIONS: ExecFileOptions = {
+  maxBuffer: Infinity,
+  windowsHide: true
+};
+
+export function execute(command: string, args: string[]): Promise<void> {
+  return new Promise((resolve, reject) => {
+    execFile(command, args, OPTIONS, error => {
+      if (error) {
+        return reject(error);
+      }
+
+      resolve();
+    });
+  });
+}
 
 export function executeSync(command: string, args: string[]): void {
-  execFileSync(command, args, { maxBuffer: Infinity, windowsHide: true });
+  execFileSync(command, args, OPTIONS);
 }
