@@ -1,13 +1,19 @@
 import { join, resolve } from 'path';
-import { existsSync } from 'fs';
+import { rimrafSync } from 'rimraf';
+import { existsSync, mkdirSync } from 'fs';
 
 import { sevenUnzipSync } from '../src/sevenUnzipSync';
-import { TEMP_DIR } from './setup';
+
+const UNZIP_TEMP_DIR = resolve(__dirname, '.temp', 'unzip');
 
 describe('Test sevenUnzipSync function', () => {
+  beforeAll(() => {
+    mkdirSync(UNZIP_TEMP_DIR, { recursive: true });
+  });
+
   test('extracts files from a 7z archive and verifies their existence', () => {
     const source = resolve('tests', 'data', `test ${process.platform}.7z`);
-    sevenUnzipSync(source, TEMP_DIR);
+    sevenUnzipSync(source, UNZIP_TEMP_DIR);
 
     [
       'inner folder',
@@ -16,9 +22,13 @@ describe('Test sevenUnzipSync function', () => {
       'test 1.txt',
       'test 2.txt'
     ]
-      .map(file => join(TEMP_DIR, file))
+      .map(file => join(UNZIP_TEMP_DIR, file))
       .forEach(path => {
         expect(existsSync(path)).toBeTruthy();
       });
+  });
+
+  afterAll(() => {
+    rimrafSync(UNZIP_TEMP_DIR);
   });
 });
