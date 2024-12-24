@@ -29,6 +29,7 @@ jobs:
         run: |
           npm ci
           npm run lint
+          npm run build
           npm test
 
   # linux x64
@@ -48,6 +49,7 @@ jobs:
           chmod +x 7zip/linux_x64_7z
           npm ci
           npm run lint
+          npm run build
           npm test
 
   # darwin arm64
@@ -67,4 +69,5 @@ jobs:
           chmod +x 7zip/darwin_7z
           npm ci
           npm run lint
+          npm run build
           npm test

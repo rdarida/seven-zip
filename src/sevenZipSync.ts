@@ -1,5 +1,4 @@
-import { execFileSync } from 'child_process';
-
+import { executeSync } from './utils';
 import { getSevenZipPath } from './getSevenZipPath';
 
 export function sevenZipSync(paths: string[], destination: string): void {
@@ -11,5 +10,5 @@ export function sevenZipSync(paths: string[], destination: string): void {
 
   const args = ['a', destination, ...paths];
 
-  execFileSync(command, args, { maxBuffer: Infinity, windowsHide: true });
+  executeSync(command, args);
 }
