@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 import yargs from 'yargs';
 
+import texts from './texts.json';
 import { sevenZipSync, sevenUnzipSync } from '.';
 
 type ZipArgs = {
@@ -15,28 +16,22 @@ type UnzipArgs = {
 
 yargs
   .scriptName('seven')
-  .usage(
-    '$0 <cmd> [args]',
-    'A CLI tool for compressing and extracting files using 7-Zip.'
-  )
+  .usage('$0 <cmd> [args]', texts.description)
+  .demandCommand(1, texts.demandMsg)
   .command<ZipArgs>(
     'zip <destination> <paths...>',
-    'Compresses multiple files into a zipped file.',
+    texts.zip.description,
     yargs => {
       return yargs
-        .example(
-          '$0 zip dest.7z file1 file2.txt folder',
-          'Creates a new 7z archive named "dest.7z" containing "file1", "file2.txt", and the contents of the "folder" directory.'
-        )
+        .example('$0 zip dest.7z file1 file2.txt folder', texts.zip.example)
         .positional('destination', {
           demandOption: true,
-          describe: 'Specifies the path to the archive output file',
+          describe: texts.zip.args.destination,
           type: 'string'
         })
         .positional('paths', {
           demandOption: true,
-          describe:
-            'Specifies the paths to the files to add to the archive zipped file',
+          describe: texts.zip.args.paths,
           type: 'string',
           array: true
         });
@@ -51,21 +46,18 @@ yargs
   )
   .command<UnzipArgs>(
     'unzip <archive> <destination>',
-    'Extracts files from a specified zipped file.',
+    texts.unzip.description,
     yargs => {
       return yargs
-        .example(
-          '$0 unzip archive.7z destination',
-          'Extracts the contents of the "archive.7z" archive into the "destination" directory. If the folder does not exist, it will be created.'
-        )
+        .example('$0 unzip archive.7z destination', texts.unzip.example)
         .positional('archive', {
           demandOption: true,
-          describe: 'Specifies the path to the archive file',
+          describe: texts.unzip.args.archive,
           type: 'string'
         })
         .positional('destination', {
           demandOption: true,
-          describe: 'Specifies the path to the output folder',
+          describe: texts.unzip.args.destination,
           type: 'string'
         });
     },
@@ -77,7 +69,6 @@ yargs
       }
     }
   )
-  .demandCommand(1, 'You need to specify a command: zip or unzip')
   .help()
   .strict()
   .parseSync();

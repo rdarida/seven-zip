@@ -2,12 +2,11 @@ import { execute } from './utils';
 import { getSevenZipPath } from './getSevenZipPath';
 
 /**
- *  Compresses multiple files into a zipped file **asynchronously**.
+ * Compresses multiple files into a zipped file **asynchronously**.
  *
- * @param paths Specifies the paths to the files to add to the archive zipped
- * file.
+ * @param paths Specifies the paths to the files to add to the zipped file.
  *
- * @param destination Specifies the path to the archive output file.
+ * @param destination Specifies the path to the output zipped file.
  *
  * @throws {Error} Will throw an error if the 7-Zip executable is not found.
  */
