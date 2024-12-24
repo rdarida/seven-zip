@@ -5,7 +5,7 @@ const OPTIONS: ExecFileOptions = {
   windowsHide: true
 };
 
-export function execute(command: string, args: string[]): Promise<void> {
+export async function execute(command: string, args: string[]): Promise<void> {
   return new Promise((resolve, reject) => {
     execFile(command, args, OPTIONS, error => {
       if (error) {
