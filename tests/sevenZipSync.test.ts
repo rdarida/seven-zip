@@ -1,6 +1,6 @@
 import { join, resolve } from 'path';
 import { rimrafSync } from 'rimraf';
-import { existsSync, mkdirSync, readFileSync } from 'fs';
+import { mkdirSync, readFileSync } from 'fs';
 
 import { sevenZipSync } from '../src/sevenZipSync';
 import { sevenUnzipSync } from '../src/sevenUnzipSync';
@@ -12,7 +12,7 @@ describe('Test sevenZipSync function', () => {
     mkdirSync(ZIP_TEMP_DIR, { recursive: true });
   });
 
-  test('', () => {
+  test('recompresses extracted files into a new 7z archive and verifies it matches the original', () => {
     const source = resolve('tests', 'data', `test ${process.platform}.7z`);
     sevenUnzipSync(source, ZIP_TEMP_DIR);
 
