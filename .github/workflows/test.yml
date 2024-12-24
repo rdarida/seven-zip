@@ -45,6 +45,7 @@ jobs:
 
       - name: Test
         run: |
+          chmod +x 7zip/linux_x64_7z
           npm ci
           npm run lint
           npm test
@@ -63,6 +64,7 @@ jobs:
 
       - name: Build and run
         run: |
+          chmod +x 7zip/darwin_7z
           npm ci
           npm run lint
           npm test
