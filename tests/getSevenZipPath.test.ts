@@ -1,6 +1,20 @@
 import { getSevenZipPath } from '../src/getSevenZipPath';
 
 describe('Test getSevenZipPath function', () => {
+  test('resolves correct 7-Zip executable path based on platform and architecture', () => {
+    const actual = getSevenZipPath();
+
+    if (process.platform === 'win32') {
+      expect(actual?.endsWith('win32_x64_7z.exe')).toBeTruthy();
+    } else if (process.platform === 'linux') {
+      expect(actual?.endsWith('linux_x64_7z')).toBeTruthy();
+    } else if (process.platform === 'darwin') {
+      expect(actual?.endsWith('darwin_7z')).toBeTruthy();
+    } else {
+      fail();
+    }
+  });
+
   test('resolves the correct 7-Zip executable path for Windows architectures', () => {
     let actual = getSevenZipPath('win32', 'arm');
     expect(actual).toBeUndefined();
