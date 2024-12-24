@@ -5,7 +5,9 @@ import { mkdirSync, readFileSync } from 'fs';
 import { sevenUnzipSync } from '../src/sevenUnzipSync';
 import { sevenZipSync } from '../src/sevenZipSync';
 
-const ZIP_TEMP_DIR = resolve(__dirname, '.temp', 'zipSync');
+import { TEMP_DIR } from './teardown';
+
+const ZIP_TEMP_DIR = join(TEMP_DIR, 'zipSync');
 
 describe('Test sevenZipSync function', () => {
   beforeAll(() => {

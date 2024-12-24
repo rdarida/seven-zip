@@ -4,7 +4,9 @@ import { existsSync, mkdirSync } from 'fs';
 
 import { sevenUnzipSync } from '../src/sevenUnzipSync';
 
-const UNZIP_TEMP_DIR = resolve(__dirname, '.temp', 'unzipSync');
+import { TEMP_DIR } from './teardown';
+
+const UNZIP_TEMP_DIR = join(TEMP_DIR, 'unzipSync');
 
 describe('Test sevenUnzipSync function', () => {
   beforeAll(() => {
