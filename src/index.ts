@@ -1,5 +1,6 @@
 import { join, resolve } from 'path';
 import { existsSync } from 'fs';
+import { execFileSync, execSync } from 'child_process';
 
 const ZIP_DIR = resolve(__dirname, '..', '7zip');
 
@@ -28,7 +29,13 @@ export function sevenZipSync(paths: string[], destination: string): void {
 }
 
 export function sevenUnzipSync(source: string, destination: string): void {
-  console.log('sevenUnzipSync');
-  console.log('source:', source);
-  console.log('destination:', destination);
+  const command = get7zipPath();
+
+  if (!command) {
+    throw new Error('There is no command.');
+  }
+
+  const args = ['x', source, `-o${destination}`];
+
+  execFileSync(command, args, { maxBuffer: Infinity, windowsHide: true });
 }
