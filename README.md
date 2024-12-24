@@ -1,5 +1,5 @@
 <h1 align="center">seven-zip</h1>
-<p align="center">Cross-platform 7zip for Node.js.</p>
+<p align="center">Cross-platform 7-Zip for Node.js.</p>
 <p align="center">
   <a href="https://rdarida.github.io/seven-zip/" target="_blank">
     <img src="https://img.shields.io/badge/website-blue?style=flat" />
