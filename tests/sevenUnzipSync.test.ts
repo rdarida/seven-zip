@@ -12,8 +12,8 @@ describe('Test sevenUnzipSync function', () => {
   });
 
   test('extracts files from a 7z archive and verifies their existence', () => {
-    const source = resolve('tests', 'data', `test ${process.platform}.7z`);
-    sevenUnzipSync(source, UNZIP_TEMP_DIR);
+    const archive = resolve('tests', 'data', `test ${process.platform}.7z`);
+    sevenUnzipSync(archive, UNZIP_TEMP_DIR);
 
     [
       'inner folder',

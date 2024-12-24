@@ -9,7 +9,7 @@ type ZipArgs = {
 };
 
 type UnzipArgs = {
-  source: string;
+  archive: string;
   destination: string;
 };
 
@@ -50,15 +50,15 @@ yargs
     }
   )
   .command<UnzipArgs>(
-    'unzip <source> <destination>',
+    'unzip <archive> <destination>',
     'Extracts files from a specified zipped file.',
     yargs => {
       return yargs
         .example(
-          '$0 unzip source.7z destination',
-          'Extracts the contents of the "source.7z" archive into the "destination" directory. If the folder does not exist, it will be created.'
+          '$0 unzip archive.7z destination',
+          'Extracts the contents of the "archive.7z" archive into the "destination" directory. If the folder does not exist, it will be created.'
         )
-        .positional('source', {
+        .positional('archive', {
           demandOption: true,
           describe: 'Specifies the path to the archive file',
           type: 'string'
@@ -71,7 +71,7 @@ yargs
     },
     args => {
       try {
-        sevenUnzipSync(args.source, args.destination);
+        sevenUnzipSync(args.archive, args.destination);
       } catch (e: any) {
         console.error(e);
       }

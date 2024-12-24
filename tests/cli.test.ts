@@ -12,8 +12,8 @@ describe('Test cli', () => {
   });
 
   test('unzips and recompresses files using CLI commands', () => {
-    const source = resolve('tests', 'data', `test ${process.platform}.7z`);
-    executeSync('node', ['dist/cli.js', 'unzip', source, CLI_TEMP_DIR]);
+    const archive = resolve('tests', 'data', `test ${process.platform}.7z`);
+    executeSync('node', ['dist/cli.js', 'unzip', archive, CLI_TEMP_DIR]);
 
     const paths = ['inner folder', 'test 1.txt', 'test 2.txt'].map(file =>
       join(CLI_TEMP_DIR, file)
@@ -25,7 +25,7 @@ describe('Test cli', () => {
     executeSync('node', ['dist/cli.js', 'zip', destination, ...paths]);
 
     const actual = readFileSync(destination);
-    const expected = readFileSync(source);
+    const expected = readFileSync(archive);
     expect(actual).toEqual(expected);
   });
 
