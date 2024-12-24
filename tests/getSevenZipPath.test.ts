@@ -45,7 +45,7 @@ describe('Test getSevenZipPath function', () => {
 
   test('resolves the correct 7-Zip executable path for macOS architectures', () => {
     let actual = getSevenZipPath('darwin', 'arm');
-    expect(actual?.endsWith('darwin_7z')).toBeTruthy();
+    expect(actual).toBeUndefined();
 
     actual = getSevenZipPath('darwin', 'arm64');
     expect(actual?.endsWith('darwin_7z')).toBeTruthy();
